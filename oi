@@ -1,0 +1,10 @@
+        <div class="search-container">
+            <input type="text" placeholder="Buscar produtos...">
+            <button><img src="https://images.vexels.com/media/users/3/132068/isolated/preview/f9bb81e576c1a361c61a8c08945b2c48-icone-de-pesquisa.png" width="20px"></button>
+        </div>
+        <a onclick="mostrarCarrinho()">
+            <div class="cart-icon">
+                <img src="https://icones.pro/wp-content/uploads/2021/05/symbole-charrette-noire.png" alt="Carrinho">
+            </div>
+        </a>
+    </header>

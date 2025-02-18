@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Online</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Adiciona um estilo para fixar os botões no canto inferior direito */
+        .action-buttons {
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .action-buttons button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #esvaziar {
+            background-color: rgb(54, 205, 255);
+            color: white;
+        }
+
+        #totalButton {
+            background-color:rgb(54, 205, 255);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="action-buttons">
+            <button onclick="esvaziarCarrinho()" id="esvaziar">
+                Esvaziar Carrinho (0)
+            </button>
+            <button onclick="mostrarTotal()" id="totalButton">
+                Ver Total
+            </button>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar produtos..." oninput="pesquisarProdutos()">
+            <button><img src="https://images.vexels.com/media/users/3/132068/isolated/preview/f9bb81e576c1a361c61a8c08945b2c48-icone-de-pesquisa.png" width="20px"></button>
+        </div>
+        <a onclick="mostrarCarrinho()">
+            <div class="cart-icon">
+                <img src="https://icones.pro/wp-content/uploads/2021/05/symbole-charrette-noire.png" alt="Carrinho">
+            </div>
+        </a>
+    </header>
+
+    <div class="product-grid">
+        <div class="product" data-name="Fone de ouvido gamer LK">
+            <img src="https://m.media-amazon.com/images/I/41T6UXPj8vL._AC_UF1000,1000_QL80_.jpg" alt="Fone de ouvido">
+            <p>Fone de ouvido gamer LK</p>
+            <div class="price">R$20,00</div>
+            <button onclick="comprar('Fone de ouvido gamer LK', 20.00)">comprar</button>
+        </div>
+        <div class="product" data-name="Monitor game LK">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_735145-MLA48131216536_112021-O.webp" alt="Fone de ouvido">
+            <p>Monitor game LK</p>
+            <div class="price">R$620,00</div>
+            <button onclick="comprar('Monitor game LK', 620.00)">comprar</button>
+        </div>
+        <div class="product" data-name="GeforceRTX">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT45esPqvxrxNtnB-1rfHar_0NPd2C3RTmBAg&s" alt="Fone de ouvido">
+            <p>GeforceRTX</p>
+            <div class="price">R$4.800,00</div>
+            <button onclick="comprar('GeforceRTX', 4800.00)">comprar</button>
+        </div>
+        <div class="product" data-name="Pc Gamer montado">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgNc8dLAgscycL8CqVWuKSpYn8nlxqWjYcow&s" alt="Fone de ouvido">
+            <p>Pc Gamer montado</p>
+            <div class="price">R$2.000,00</div>
+            <button onclick="comprar('Pc Gamer montado', 2000.00)">comprar</button>
+        </div>
+        <div class="product" data-name="Teclado Mecânico RGB">
+            <img src="https://images.tcdn.com.br/img/img_prod/745260/teclado_gamer_mecanico_blue_switch_led_rgb_usb_pc_ps4_xbox_71_1_37b42f241e6a0881a2cb1709695f9091.jpg" alt="Teclado mecânico">
+            <p>Teclado Mecânico RGB</p>
+            <div class="price">R$199,90</div>
+            <button onclick="comprar('Teclado Mecânico RGB', 199.90)">comprar</button>
+        </div>
+        <div class="product" data-name="Memória RAM DDR4">
+            <img src="https://cdn.dooca.store/151246/products/3r7tvpuvuuifv0c6u6e575rntersxvtpzyn7_640x640+fill_ffffff.jpg?v=1727832212&webp=0" alt="Fone de ouvido">
+            <p>Memória RAM DDR4</p>
+            <div class="price">R$620,00</div>
+            <button onclick="comprar('Memória RAM DDR4', 620.00)">comprar</button>
+        </div>
+        <div class="product" data-name="core5">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcYPYqqUK0ryxxJpFESdQh_UmXdqIOjpjzkg&s" alt="Fone de ouvido">
+            <p>core5</p>
+            <div class="price">R$200,00</div>
+            <button onclick="comprar('core5', 200.00)">comprar</button>
+        </div>
+        <div class="product" data-name="Ryzen 3">
+            <img src="https://m.media-amazon.com/images/I/81DdgQpbMqL.jpg" alt="Fone de ouvido">
+            <p>Ryzen 3</p>
+            <div class="price">R$500,00</div>
+            <button onclick="comprar('Ryzen 3', 500.00)">comprar</button>
+        </div>
+        <div class="product" data-name="oculos VR">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUHHcXq43a6hKpN3X7I6D3Y8uDsJXdOEcL4Q&s" alt="Teclado mecânico">
+            <p>oculos VR</p>
+            <div class="price">R$2.199,90</div>
+            <button onclick="comprar('oculos VR', 2199.90)">comprar</button>
+        </div>
+    </div>
+
+    <!-- Botões de ação no canto inferior direito -->
+  
+    
+    <script>
+        let carrinho = [];
+
+        // Função para atualizar o texto do botão de esvaziar
+        function atualizarBotaoCarrinho() {
+            const botao = document.getElementById('esvaziar');
+            botao.textContent = `Esvaziar Carrinho (${carrinho.length})`;
+        }
+
+        // Função para mostrar o carrinho
+        function mostrarCarrinho() {
+            if (carrinho.length === 0) {
+                alert("Seu carrinho está vazio.");
+            } else {
+                let itens = carrinho.map(item => `${item.produto} - R$${item.preco.toFixed(2)}`).join("\n");
+                alert("Itens no carrinho:\n" + itens);
+            }
+        }
+
+        // Função para comprar um produto
+        function comprar(produto, preco) {
+            carrinho.push({ produto, preco });
+            atualizarBotaoCarrinho();
+            atualizarTotal();  // Atualiza o total imediatamente
+            alert(produto + " adicionado ao carrinho por R$" + preco.toFixed(2));
+        }
+
+        // Função para esvaziar o carrinho
+        function esvaziarCarrinho() {
+            if (carrinho.length === 0) {
+                alert("O carrinho já está vazio.");
+            } else {
+                carrinho = [];
+                atualizarBotaoCarrinho();
+                atualizarTotal();  // Atualiza o total quando o carrinho é esvaziado
+                alert("Carrinho esvaziado com sucesso!");
+            }
+        }
+
+        // Função para mostrar o total do carrinho
+        function mostrarTotal() {
+            const total = carrinho.reduce((soma, item) => soma + item.preco, 0);
+            const totalButton = document.getElementById('totalButton');
+            totalButton.textContent = `Ver Total (R$${total.toFixed(2)})`;
+            alert("Total do carrinho: R$" + total.toFixed(2));
+        }
+
+        // Função para atualizar o total e o texto do botão
+        function atualizarTotal() {
+            const total = carrinho.reduce((soma, item) => soma + item.preco, 0);
+            const totalButton = document.getElementById('totalButton');
+            totalButton.textContent = `Ver Total (R$${total.toFixed(2)})`;
+        }
+
+        // Função para pesquisar produtos
+        function pesquisarProdutos() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const produtos = document.querySelectorAll('.product');
+            
+            produtos.forEach(produto => {
+                const nome = produto.getAttribute('data-name').toLowerCase();
+                if (nome.includes(searchInput)) {
+                    produto.style.display = 'block'; // Exibe o produto
+                } else {
+                    produto.style.display = 'none'; // Oculta o produto
+                }
+            });
+        }
+    </script>
+</body>
+</html>
