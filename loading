@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra de Carregamento</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+        }
+
+        .barra-container {
+            width: 80%;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 30px;
+            margin-bottom: 20px;
+        }
+
+        .barra {
+            width: 0%;
+            height: 100%;
+            background-color: #007bff;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .result {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="barra-container">
+        <div class="barra" id="barra">0%</div>
+    </div>
+    <script>
+        function iniciarCarregamento() {
+            let barra = document.getElementById("barra");
+            let largura = 0;
+            let intervalo = setInterval(() => {
+                if (largura >= 100) {
+                    clearInterval(intervalo);
+                    window.location.href = "pagamento.html";
+                } else {
+                    largura += 1;
+                    barra.style.width = largura + "%";
+                    barra.textContent = largura + "%";
+                }
+            }, 50);
+        }
+
+        function mostrarValor() {
+            let valor = document.getElementById("valorInput").value;
+            document.getElementById("resultado").textContent = "Valor: " + valor;
+        }
+
+        window.onload = iniciarCarregamento;
+    </script>
+
+</body>
+</html>

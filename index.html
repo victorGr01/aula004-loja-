@@ -85,6 +85,18 @@
             <div class="price">R$199,90</div>
             <button onclick="comprar('Teclado Mecânico RGB', 199.90)">comprar</button>
         </div>
+        <div class="product" data-name="Teclado Mecânico RGB">
+            <img src="https://m.media-amazon.com/images/I/71NfMZKkpQL._AC_SX679_.jpg" alt="Teclado mecânico">
+            <p>Memoria Ram Nv2</p>
+            <div class="price">R$199,90</div>
+            <button onclick="comprar('Teclado Mecânico RGB', 199.90)">comprar</button>
+        </div>
+        <div class="product" data-name="Teclado Mecânico RGB">
+            <img src="https://waz.vtexassets.com/arquivos/ids/211649/121024-1-Placa_de_video_NVIDIA_GeForce_GTX_1650_4GB_PCI_E_GALAX_EX_1_CLICK_OC_65SQL8DS93E1_121024.jpg?v=637411721309970000" alt="Teclado mecânico">
+            <p>GTX 1650</p>
+            <div class="price">R$199,90</div>
+            <button onclick="comprar('Teclado Mecânico RGB', 199.90)">comprar</button>
+        </div>
         <div class="product" data-name="Memória RAM DDR4">
             <img src="https://cdn.dooca.store/151246/products/3r7tvpuvuuifv0c6u6e575rntersxvtpzyn7_640x640+fill_ffffff.jpg?v=1727832212&webp=0" alt="Fone de ouvido">
             <p>Memória RAM DDR4</p>
@@ -114,74 +126,7 @@
     <!-- Botões de ação no canto inferior direito -->
   
     
-    <script>
-        let carrinho = [];
-
-        // Função para atualizar o texto do botão de esvaziar
-        function atualizarBotaoCarrinho() {
-            const botao = document.getElementById('esvaziar');
-            botao.textContent = `Esvaziar Carrinho (${carrinho.length})`;
-        }
-
-        // Função para mostrar o carrinho
-        function mostrarCarrinho() {
-            if (carrinho.length === 0) {
-                alert("Seu carrinho está vazio.");
-            } else {
-                let itens = carrinho.map(item => `${item.produto} - R$${item.preco.toFixed(2)}`).join("\n");
-                alert("Itens no carrinho:\n" + itens);
-            }
-        }
-
-        // Função para comprar um produto
-        function comprar(produto, preco) {
-            carrinho.push({ produto, preco });
-            atualizarBotaoCarrinho();
-            atualizarTotal();  // Atualiza o total imediatamente
-            alert(produto + " adicionado ao carrinho por R$" + preco.toFixed(2));
-        }
-
-        // Função para esvaziar o carrinho
-        function esvaziarCarrinho() {
-            if (carrinho.length === 0) {
-                alert("O carrinho já está vazio.");
-            } else {
-                carrinho = [];
-                atualizarBotaoCarrinho();
-                atualizarTotal();  // Atualiza o total quando o carrinho é esvaziado
-                alert("Carrinho esvaziado com sucesso!");
-            }
-        }
-
-        // Função para mostrar o total do carrinho
-        function mostrarTotal() {
-            const total = carrinho.reduce((soma, item) => soma + item.preco, 0);
-            const totalButton = document.getElementById('totalButton');
-            totalButton.textContent = `Ver Total (R$${total.toFixed(2)})`;
-            alert("Total do carrinho: R$" + total.toFixed(2));
-        }
-
-        // Função para atualizar o total e o texto do botão
-        function atualizarTotal() {
-            const total = carrinho.reduce((soma, item) => soma + item.preco, 0);
-            const totalButton = document.getElementById('totalButton');
-            totalButton.textContent = `Ver Total (R$${total.toFixed(2)})`;
-        }
-
-        // Função para pesquisar produtos
-        function pesquisarProdutos() {
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            const produtos = document.querySelectorAll('.product');
-            
-            produtos.forEach(produto => {
-                const nome = produto.getAttribute('data-name').toLowerCase();
-                if (nome.includes(searchInput)) {
-                    produto.style.display = 'block'; // Exibe o produto
-                } else {
-                    produto.style.display = 'none'; // Oculta o produto
-                }
-            });
-        }
+    <script src="script.js">
     </script>
 </body>
 </html>
